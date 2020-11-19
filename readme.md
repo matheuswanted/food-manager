@@ -1,0 +1,1 @@
+This is a small project building a stock and food manager for personal use.
