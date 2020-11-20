@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option csharp_namespace = "Wanted.FoodManager.Stock.Api";
+
+package stock;
+
+// The greeting service definition.
+service ShoppingListGrpc {
+   rpc ListShoppingLists (ShoppingListsRequest) returns (ShoppingListsReply);
+}
+
+enum Unit {
+   G = 0;
+   KG = 1;
+   UTY = 2;
+}
+
+message ShoppingListsRequest {
+   
+}
+
+message ShoppingListsReply {
+   repeated ShoppingListReply content = 1;
+}
+
+message ShoppingListItemReply {
+   string name = 1;
+   double amount = 2;
+   Unit unit = 3;
+}
+
+message ShoppingListReply {
+   string id = 1;
+   string name = 2;
+   repeated ShoppingListItemReply items = 3;
+}

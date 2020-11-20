@@ -2,8 +2,8 @@
 {
     public class ShoppingListItem
     {
-        public string Name { get; private set; }
-        public double Amount { get; private set; }
-        public Unit Unit { get; private set; }
+        public string Name { get; set; }
+        public double Amount { get; set; }
+        public Unit Unit { get; set; }
     }
 }

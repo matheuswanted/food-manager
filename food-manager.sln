@@ -10,6 +10,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "stock", "stock", "{A407E2EB-F19A-4FE6-A39B-5ABDA9996CDA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E124C4BF-2486-4ED6-A13D-6A3E601FA0D9}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yaml = docker-compose.yaml
+		readme.md = readme.md
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wanted.FoodManager.Stock.Domain", "src\stock\Wanted.FoodManager.Stock.Domain\Wanted.FoodManager.Stock.Domain.csproj", "{73C3FE32-01CE-4291-937D-EE39D0F1A6AC}"
 EndProject
