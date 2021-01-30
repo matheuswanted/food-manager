@@ -1,8 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Wanted.FoodManager.Stock.Api.Repositories;
 
 namespace Wanted.FoodManager.Stock.Api.Configuration

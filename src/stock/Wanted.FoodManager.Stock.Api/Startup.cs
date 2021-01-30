@@ -4,12 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Wanted.FoodManager.Stock.Api.Configuration;
-using Wanted.FoodManager.Stock.Api.Repositories;
 using Wanted.FoodManager.Stock.Domain;
 
 namespace Wanted.FoodManager.Stock.Api
@@ -34,13 +29,8 @@ namespace Wanted.FoodManager.Stock.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ShoppingListRepository repo)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            repo.Save(new ShoppingList()
-            {
-                Name = DateTime.UtcNow.ToString()
-            }).Wait();
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

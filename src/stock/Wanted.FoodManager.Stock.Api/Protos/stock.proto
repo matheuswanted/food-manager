@@ -7,6 +7,9 @@ package stock;
 // The greeting service definition.
 service ShoppingListGrpc {
    rpc ListShoppingLists (ShoppingListsRequest) returns (ShoppingListsReply);
+   rpc FindShoppingList (FindListsRequest) returns (ShoppingListReply);
+   rpc CreateShoppingList (CreateShoppingListRequest) returns (ShoppingListReply);
+   rpc AddShoppingListItem (AddShoppingListItemRequest) returns (ShoppingListItemReply);
 }
 
 enum Unit {
@@ -17,6 +20,10 @@ enum Unit {
 
 message ShoppingListsRequest {
    
+}
+
+message FindListsRequest {
+   string id = 1;
 }
 
 message ShoppingListsReply {
@@ -33,4 +40,15 @@ message ShoppingListReply {
    string id = 1;
    string name = 2;
    repeated ShoppingListItemReply items = 3;
+}
+
+message CreateShoppingListRequest {
+   string name = 1;
+}
+
+message AddShoppingListItemRequest {
+   string shoppingListId = 1;
+   string name = 2;
+   double amount = 3;
+   Unit unit = 4;
 }

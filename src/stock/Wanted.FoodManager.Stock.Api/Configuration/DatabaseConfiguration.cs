@@ -1,10 +1,15 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Conventions;
+using MongoDB.Bson.Serialization.IdGenerators;
+using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 using System;
 using System.Linq;
 using System.Reflection;
+using Wanted.FoodManager.Stock.Domain;
 
 namespace Wanted.FoodManager.Stock.Api.Configuration
 {
@@ -31,12 +36,19 @@ namespace Wanted.FoodManager.Stock.Api.Configuration
 
         private static void ConfigureConventions()
         {
+            BsonClassMap.RegisterClassMap<Entity>(cm =>
+            {
+                cm.AutoMap();
+                cm.MapIdMember(c => c.Id)
+                    .SetIdGenerator(StringObjectIdGenerator.Instance)
+                    .SetSerializer(new StringSerializer(BsonType.ObjectId));
+            });
+
             var convetions = new ConventionPack()
             {
                 new CamelCaseElementNameConvention(),
-                new EnumRepresentationConvention(MongoDB.Bson.BsonType.String),
+                new EnumRepresentationConvention(BsonType.String),
                 new IgnoreIfNullConvention(true),
-                //new StringIdStoredAsObjectIdConvention()
             };
 
             ConventionRegistry.Register("standard", convetions, _ => true);
